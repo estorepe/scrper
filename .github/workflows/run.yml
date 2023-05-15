@@ -6,7 +6,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    #container: dazz111/yfd:latest
+    container: dazz111/yfd:latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
       - name: Create ZIP file
         run: |
           mkdir output
-          sudo apt install libcurl4-openssl-dev libssl-dev  -y
+          apt install libcurl4-openssl-dev libssl-dev  -y
           wget -q $src
           wget -q $url
           lscpu

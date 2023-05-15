@@ -1,9 +1,7 @@
 while read line; do
   {
-    python3 tscr.py "$line" &&
-    echo "$line processed successfully" &&
-    echo "$line" | tee -a tsite-map-1.txt ||
-    echo "$line processing failed"
+    python3 tscr.py "$line"
+    exit_status=$?
   } &
 
   while true; do
@@ -13,4 +11,8 @@ while read line; do
     trap "kill 0" SIGINT SIGTERM EXIT;
     wait
   )
+
+  if [ $exit_status -eq 0 ]; then
+    echo "$line" | tee -a tsite-map-1.txt
+  fi
 done < tsite-map.txt

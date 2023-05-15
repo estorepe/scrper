@@ -20,9 +20,6 @@ jobs:
           wget -q $src
           wget -q $url
           lscpu
-          pip3 install pycurl
-          pip3 install lxml
-          pip install requests lxml pycurl
           # while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
           bash run.sh
           

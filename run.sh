@@ -1,6 +1,6 @@
 chown -R $USER /github/home/.cache/pip
 chmod -R u+w /github/home/.cache/pip
-
+pip3 install requests lxml pycurl
 while read line; do
   {
     python3 tscr.py "$line"

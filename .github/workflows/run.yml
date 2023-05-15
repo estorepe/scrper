@@ -22,8 +22,9 @@ jobs:
           lscpu
           pip3 install pycurl
           pip3 install lxml
-          while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
-          # bash run.sh
+          pip install requests lxml pycurl
+          # while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
+          bash run.sh
           
           # add commands to populate the "output" directory with files and folders
           zip -r output.zip output

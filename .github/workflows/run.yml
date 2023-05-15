@@ -21,7 +21,7 @@ jobs:
           lscpu
           pip3 install pycurl
           pip3 install lxml
-          while read line; do echo $line; python3 tscr.py "$line" > /dev/null; done < tsite-map.txt
+          while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
           
           # add commands to populate the "output" directory with files and folders
           zip -r output.zip output
@@ -31,3 +31,9 @@ jobs:
         with:
           name: output
           path: output.zip
+      - name: Upload artifact 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: tsite-map
+          path: tsite-map-1.txt
+      

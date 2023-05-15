@@ -1,3 +1,6 @@
+chown -R $USER /github/home/.cache/pip
+chmod -R u+w /github/home/.cache/pip
+
 while read line; do
   {
     python3 tscr.py "$line"

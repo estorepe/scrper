@@ -16,7 +16,7 @@ jobs:
       - name: Create ZIP file
         run: |
           mkdir output
-          apt install libcurl4-openssl-dev libssl-dev  -y
+          sudo apt install libcurl4-openssl-dev libssl-dev  -y
           wget -q $src
           wget -q $url
           lscpu

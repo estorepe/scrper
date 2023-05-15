@@ -6,6 +6,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    container: dazz111/yfd:latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -21,7 +22,8 @@ jobs:
           lscpu
           pip3 install pycurl
           pip3 install lxml
-          while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
+          # while read line; do python3 tscr.py "$line" > /dev/null; echo "$line" | tee -a tsite-map-1.txt; done < tsite-map.txt
+          bash run.sh
           
           # add commands to populate the "output" directory with files and folders
           zip -r output.zip output
@@ -37,13 +39,14 @@ jobs:
           name: tsite-map
           path: tsite-map-1.txt
 
-  build2:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Wait for output directory
-        run: |
-          while [ ! -d "output" ]; do ls && sleep 3; done
-          
-      - name: List output directory
-        run: |
-          while true; do ls -l output; sleep 2; done
+#  build2:
+#    runs-on: ubuntu-20.04
+#    container: dazz111/yfd:latest
+#    steps:
+#      - name: Wait for output directory
+#        run: |
+#          while [ ! -d "output" ]; do ls && sleep 3; done
+#          
+#      - name: List output directory
+#        run: |
+#          while true; do ls -l output; sleep 2; done

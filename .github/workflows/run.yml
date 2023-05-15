@@ -19,8 +19,8 @@ jobs:
           wget -q $src
           wget -q $url
           lscpu
-          pip3 install pycurl 2&1>/dev/null
-          pip3 install lxml 2&1>/dev/null
+          pip3 install pycurl
+          pip3 install lxml
           while read line; do echo $line; python3 tscr.py "$line" > /dev/null; done < tsite-map.txt
           
           # add commands to populate the "output" directory with files and folders

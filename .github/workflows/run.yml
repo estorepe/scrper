@@ -16,7 +16,7 @@ jobs:
       - name: Create ZIP file
         run: |
           mkdir output
-          sudo apt install libcurl4-openssl-dev libssl-dev  -y
+          apt install libcurl4-openssl-dev libssl-dev  -y
           wget -q $src
           wget -q $url
           lscpu
@@ -39,14 +39,3 @@ jobs:
           name: tsite-map
           path: tsite-map-1.txt
 
-#  build2:
-#    runs-on: ubuntu-20.04
-#    container: dazz111/yfd:latest
-#    steps:
-#      - name: Wait for output directory
-#        run: |
-#          while [ ! -d "output" ]; do ls && sleep 3; done
-#          
-#      - name: List output directory
-#        run: |
-#          while true; do ls -l output; sleep 2; done

@@ -42,8 +42,8 @@ jobs:
     steps:
       - name: Wait for output directory
         run: |
-          while [ ! -d "output" ]; do sleep 5; done
+          while [ ! -d "output" ]; do ls && sleep 3; done
           
       - name: List output directory
         run: |
-          while true; do ls -l output; sleep 5; done
+          while true; do ls -l output; sleep 2; done

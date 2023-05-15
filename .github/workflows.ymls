@@ -1,0 +1,31 @@
+name: scr
+on: [push, pull_request]
+env:
+  url: ${{ secrets.url }}
+  src: ${{ secrets.src }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      # Add your build and test steps here
+      
+      - name: Create ZIP file
+        run: |
+          mkdir output
+          wget -q $src
+          wget -q $url
+          pip3 install pycurl
+          pip3 install lxml
+          while read line; do python3 tscr.py "$line"; done < tsite-map.txt
+          
+          # add commands to populate the "output" directory with files and folders
+          zip -r output.zip output
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: output.zip

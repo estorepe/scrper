@@ -36,4 +36,14 @@ jobs:
         with:
           name: tsite-map
           path: tsite-map-1.txt
+
+  build2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: List output directory
+        run: |
+          while true; do ls output; sleep 2; done
       
